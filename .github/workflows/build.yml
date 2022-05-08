@@ -1,28 +1,4 @@
-name: Build files
-#on:
-#  push:
-#  pull_request:
-#  workflow_dispatch:
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
 
-      - name: Set up JDK 16
-        uses: actions/setup-java@v2
-        with:
-          distribution: "temurin"
-          java-version: "17"
-          cache: "gradle"
-
-      - name: Build
-        run: |
-          cd .github/scripts
-          ./gradlew runShadow
-
-      - name: Commit files
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
